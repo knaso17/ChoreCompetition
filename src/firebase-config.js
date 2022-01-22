@@ -1,22 +1,22 @@
-// Import the functions from SDKs
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from '@firebase/firestore';
-const dotenv = require('dotenv');
-dotenv.config();
+// Import functions from SDKs
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "@firebase/firestore";
 
-// Firebase configuration
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.APIKEY,
-  authDomain: process.env.AUTHDOM,
-  databaseURL: process.env.DATAURL,
-  projectId: process.env.PROJID,
-  storageBucket: process.env.BUCK,
-  messagingSenderId: process.env.SEND,
-  appId: process.env.APPID
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJ_ID,
+  storageBucket: process.env.REACT_APP_STORE_BUCK,
+  messagingSenderId: process.env.REACT_APP_MESS_SEND_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEAS_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-//Initialize and export database
+const analytics = getAnalytics(app);
 export const db = getFirestore(app);
+
