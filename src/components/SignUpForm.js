@@ -9,7 +9,8 @@ const SignUpForm = () => {
   }
   //state objects
   const [values, setValues] = useState(initialValues);
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
 
   //event handlers
   const handleChange = (event) => {
@@ -22,6 +23,9 @@ const SignUpForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if(values.firstName && values.lastName && values.email && values.password){
+      setValid(true);
+    }
     setSubmitted(true);
   }
 
@@ -71,7 +75,11 @@ const SignUpForm = () => {
         </label>
         <input name="password" type="password" placeholder='password' value={values.password} onChange={handleChange}/>
       </div>
-      <div id="password-error">Please enter a password</div>
+      {submitted && !values.password &&
+        <div id="password-error">
+          Please enter a password
+        </div>
+      }
       <button type="submit">Sign Up</button>
     </form>
   )
