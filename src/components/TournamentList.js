@@ -14,6 +14,7 @@ function TournamentList () {
 
     getTournaments();
   }, []);
+
   return(
     <div>
       Tournaments:
