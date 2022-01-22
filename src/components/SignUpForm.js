@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const SignUpForm = () => {
   const initialValues = {
@@ -7,35 +7,72 @@ const SignUpForm = () => {
     emailAddress: '',
     password: ''
   }
-
+  //state objects
   const [values, setValues] = useState(initialValues);
+  const [submitted, setSubmitted] = useState(false)
+
+  //event handlers
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setValues({
+      ...values,
+      [event.target.name]: value
+    });
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+  }
 
   return(
-    <form>
+    <form onSubmit={handleSubmit}>
+      {submitted &&
+        <div className="success-message">
+          Success! Thank you for signing up!
+        </div>
+      }
       <div>
-        <label htmlFor="firstname">
-            <small>First Name:</small>
+        <label htmlFor="firstName">
+            <small>First Name: </small>
           </label>
-          <input name="firstname" type="text" />
+          <input name="firstName" type="text" placeholder='first' value={values.firstName} onChange={handleChange}/>
       </div>
+      {submitted && !values.firstName &&
+        <span id="first-name-error">
+          Please enter a first name
+        </span>
+      }
       <div>
-        <label htmlFor="lastname">
-            <small>Last Name:</small>
+        <label htmlFor="lastName">
+            <small>Last Name: </small>
           </label>
-          <input name="lastname" type="text" />
+          <input name="lastName" type="text" placeholder='last' value={values.lastName} onChange={handleChange}/>
       </div>
+      {submitted && !values.lastName &&
+        <span id="last-name-error">
+          Please enter a last name
+        </span>
+      }
       <div>
         <label htmlFor="email">
-          <small>Email</small>
+          <small>Email: </small>
         </label>
-        <input type="text" name="email" />
+        <input type="text" name="email" placeholder='email' value={values.email} onChange={handleChange}/>
       </div>
+      {submitted && !values.email &&
+        <span id="email-error">
+          Please enter an email address
+          </span>
+      }
       <div>
         <label htmlFor="password">
-          <small>Password</small>
+          <small>Password: </small>
         </label>
-        <input name="password" type="password" />
+        <input name="password" type="password" placeholder='password' value={values.password} onChange={handleChange}/>
       </div>
+      <div id="password-error">Please enter a password</div>
+      <button type="submit">Sign Up</button>
     </form>
   )
 }
