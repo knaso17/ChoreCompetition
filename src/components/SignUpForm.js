@@ -29,9 +29,13 @@ const SignUpForm = () => {
     setSubmitted(true);
   }
 
+  const createUser = async () => {
+
+  };
+
   return(
     <form onSubmit={handleSubmit}>
-      {submitted &&
+      {submitted && valid &&
         <div className="success-message">
           Success! Thank you for signing up!
         </div>
