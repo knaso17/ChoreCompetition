@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import { db } from '../firebase-config';
+import { collection, addDoc } from 'firebase/firestore'
 
 const SignUpForm = () => {
   const initialValues = {
     firstName: '',
     lastName: '',
-    emailAddress: '',
+    email: '',
     password: ''
   }
   //state objects
   const [values, setValues] = useState(initialValues);
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
+  const usersCollectionRef = collection(db, "users")
 
   //event handlers
   const handleChange = (event) => {
@@ -21,17 +24,20 @@ const SignUpForm = () => {
     });
   }
 
+  const createUser = async () => {
+    await addDoc(usersCollectionRef, values)
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if(values.firstName && values.lastName && values.email && values.password){
       setValid(true);
+      createUser();
     }
     setSubmitted(true);
   }
 
-  const createUser = async () => {
 
-  };
 
   return(
     <form onSubmit={handleSubmit}>
