@@ -1,6 +1,6 @@
 import './App.css';
 import SignUpForm from './components/SignUpForm';
-import ChoreList from './components/ChoreList';
+// import ChoreList from './components/ChoreList';
 import TournamentList from './components/TournamentList';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className='App'>
       <div>Welcome to Chore Competition!</div>
       <SignUpForm/>
-      <ChoreList/>
+      {/* <ChoreList/> */}
       <TournamentList/>
     </div>
   );

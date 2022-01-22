@@ -8,7 +8,8 @@ const SignUpForm = () => {
     password: ''
   }
 
-  let [values, setValues] = useState(initialValues)
+  const [values, setValues] = useState(initialValues);
+
   return(
     <form>
       <div>

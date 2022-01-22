@@ -6,16 +6,18 @@ function TournamentList () {
   const [tournament, setTournament] = useState([]);
   const tournamentsCollectionRef = collection(db, 'tournaments')
   useEffect(() => {
+
     const getTournaments = async () =>{
       const data = await getDocs(tournamentsCollectionRef);
-      console.log(data);
+      setTournament(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
 
-    getTournaments()
+    getTournaments();
   }, [])
   return(
     <div>
-      Tournament!!!
+      Tournaments:
+      {tournament.map(tourn => (<div key={tourn.id}><h1>Name: {tourn.name}</h1><h2>Open? {`${tourn.open}`}</h2></div>))}
     </div>
   )
 }
