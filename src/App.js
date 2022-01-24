@@ -1,10 +1,10 @@
-import './App.css';
 import SignUpForm from './components/SignUpForm';
 // import ChoreList from './components/ChoreList';
 import TournamentList from './components/TournamentList';
 import Navbar from "./components/Navbar";
 import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './index.css';
 
 function App() {
   return (
