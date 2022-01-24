@@ -40,6 +40,8 @@ const SignUpForm = () => {
 
 
   return(
+    <>
+    <h1>Sign Up</h1>
     <form onSubmit={handleSubmit}>
       {submitted && valid &&
         <div className="success-message">
@@ -92,6 +94,7 @@ const SignUpForm = () => {
       }
       <button type="submit">Sign Up</button>
     </form>
+    </>
   )
 }
 

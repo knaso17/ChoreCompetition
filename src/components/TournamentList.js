@@ -17,8 +17,8 @@ function TournamentList () {
 
   return(
     <div>
-      Tournaments:
-      {tournament.map(tourn => (<div key={tourn.id}><h1>Name: {tourn.name}</h1><h2>Open? {`${tourn.open}`}</h2></div>))}
+      <h1>Tournaments:</h1>
+      {tournament.map(tourn => (<div key={tourn.id}><h2>Name: {tourn.name}</h2><h3>Open? {`${tourn.open}`}</h3></div>))}
     </div>
   )
 }

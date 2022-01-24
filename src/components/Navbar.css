@@ -1,3 +1,27 @@
 .navbar {
   background-color: darkblue;
+  display: flex;
+  height: 8em;
+  font-family: "Bungee", cursive;
+  color: white;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+.navbar img {
+  border-radius: 15px;
+  border: 3px solid white;
+  height: 7em;
+}
+a:visited {
+  color: gainsboro;
+}
+nav {
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+nav a {
+  padding-left: 20px;
 }
